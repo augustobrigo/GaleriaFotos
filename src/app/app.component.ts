@@ -6,26 +6,36 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  titulo:string = 'Temporizador';
-  hora:string="";
-  minutos:string="";
-  segundos:string="";
-  centesimas:string="";
-  numero:number=0;
-  tiempo:number=0;
-  temp:NodeJS.Timer | undefined;
-  constructor(){
-    this.temp=setInterval(()=>{
-         this.tiempo++;
-         this.numero=Math.round(Math.random()*100);
-         this.hora=new Date().getHours().toString();
-        this.centesimas=new Date().getMilliseconds().toString();
-    },100)
 
+  title = 'Angular EuroConversor';
+  euro:number=0;
+  yen:number=0;
+  dolar:number=0;
+  e_y:number=138.39;
+  e_d:number=1.08;
+  d_e:number=0.93;
+  d_y:number=128.16;
+  y_e:number=0.007;
+  y_d:number=0.008;
+  cargarDolares(){
+   this.euro= Number((this.dolar * this.d_e).toFixed(3));
+   this.yen= Number((this.dolar*this.d_y).toFixed(3));
+  }
+  cargarEuros(){
+    this.dolar= Number((this.euro * this.e_d).toFixed(3));
+   this.yen= Number((this.euro*this.e_y).toFixed(3));
+  }
+
+  cargarYenes(){
+    this.euro= Number((this.yen * this.y_e).toFixed(3));
+   this.dolar= Number((this.yen*this.y_d).toFixed(3));
   }
 
 
-
-
+  limpiar() {
+    this.euro=0;
+    this.dolar=0;
+    this.yen=0;
+    }
 
 }

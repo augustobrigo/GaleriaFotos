@@ -1,10 +1,16 @@
 <div class="container">
-  <div class="row d-flex justify-content-center">
+  <div class="row">
     <div class="col-auto">
-      <h1 class="bg-info">{{titulo}}</h1>
-           <span>{{tiempo}}</span>
-           <span>Centésimas: {{centesimas}}</span>
-    </div>
+      <h1>Teclea Euros</h1>
+       <input type="number" [(ngModel)]="euro" (change)="cargarEuros()" (keyup)="cargarEuros()">
+      <h1>Teclea Yenes</h1>
 
+      <input type="number" [(ngModel)]="yen" (change)="cargarYenes()" (keyup)="cargarYenes()">
+
+      <h1>Teclea Dolares</h1>
+      <input type="number" [(ngModel)]="dolar" (change)="cargarDolares()" (keyup)="cargarDolares()">
+
+    </div>
+     <button (click)="limpiar()">Limpiar</button>
   </div>
 </div>
