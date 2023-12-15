@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+play() {
+  this.temporizador=setInterval(()=>{
+    this.siguiente();
+  },1000)
+}
 stop() {
+  clearInterval(this.temporizador);
 }
 disminuir() {
   this.ancho-=10;
@@ -38,6 +44,7 @@ anterior() {
   imagen:string="";
   ancho:number=0;
   auto:boolean=false;
+  temporizador:NodeJS.Timeout | undefined
   constructor(){
     this.indiceImagenSeleccionada=0;
     this.ancho=300;
