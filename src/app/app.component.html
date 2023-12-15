@@ -1,16 +1,23 @@
 <div class="container">
-  <div class="row">
+  <div class="row d-flex justify-content-center">
+
     <div class="col-auto">
-      <h1>Teclea Euros</h1>
-       <input type="number" [(ngModel)]="euro" (change)="cargarEuros()" (keyup)="cargarEuros()">
-      <h1>Teclea Yenes</h1>
+      <h2>Galería de imágenes</h2>
+       <div>
+        <img [src]="imagen"  [width]="ancho">
+       </div>
+       <div>
+         <button [disabled]="indiceImagenSeleccionada<1" (click)="anterior()"class="btn btn-info btn-md m-2">Anterior</button>
+         <!-- carga antes el evento click que la condición disabled -->
+         <button [disabled]="indiceImagenSeleccionada==imagenes.length-1" (click)="siguiente()" class="btn btn-info btn-md m-2">Siguiente</button>
 
-      <input type="number" [(ngModel)]="yen" (change)="cargarYenes()" (keyup)="cargarYenes()">
+         <button (click)="aumentar()" class="btn btn-info btn-md m-2">Aumentar</button>
 
-      <h1>Teclea Dolares</h1>
-      <input type="number" [(ngModel)]="dolar" (change)="cargarDolares()" (keyup)="cargarDolares()">
+         <button (click)="disminuir()" class="btn btn-info btn-md m-2">Disminuir</button>
 
+         <button (click)="stop()" class="btn btn-info btn-md m-2">Play</button>
+
+       </div>
     </div>
-     <button (click)="limpiar()">Limpiar</button>
   </div>
 </div>

@@ -6,36 +6,48 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+stop() {
+}
+disminuir() {
+  this.ancho-=10;
+}
+aumentar() {
+  this.ancho+=10;
+}
+siguiente() {
+  this.indiceImagenSeleccionada++;
+  // if (this.indiceImagenSeleccionada==this.imagenes.length){
+  //   this.indiceImagenSeleccionada=0;
+  // }
+  this.imagen=this.imagenes[this.indiceImagenSeleccionada];
 
-  title = 'Angular EuroConversor';
-  euro:number=0;
-  yen:number=0;
-  dolar:number=0;
-  e_y:number=138.39;
-  e_d:number=1.08;
-  d_e:number=0.93;
-  d_y:number=128.16;
-  y_e:number=0.007;
-  y_d:number=0.008;
-  cargarDolares(){
-   this.euro= Number((this.dolar * this.d_e).toFixed(3));
-   this.yen= Number((this.dolar*this.d_y).toFixed(3));
+}
+anterior() {
+  this.indiceImagenSeleccionada--;
+  // if (this.indiceImagenSeleccionada==-1){
+  //   this.indiceImagenSeleccionada=this.imagenes.length-1;
+  // }
+  this.imagen=this.imagenes[this.indiceImagenSeleccionada];
+
+
+}
+  title = 'Angular P8';
+  imagenes = [ 'https://randomuser.me/api/portraits/women/40.jpg', 'https://randomuser.me/api/portraits/women/41.jpg', 'https://randomuser.me/api/portraits/women/42.jpg', 'https://randomuser.me/api/portraits/women/43.jpg', 'https://randomuser.me/api/portraits/women/44.jpg', 'https://randomuser.me/api/portraits/men/40.jpg', 'https://randomuser.me/api/portraits/men/41.jpg', 'https://randomuser.me/api/portraits/men/42.jpg', 'https://randomuser.me/api/portraits/men/43.jpg', 'https://randomuser.me/api/portraits/men/44.jpg', ];
+
+  indiceImagenSeleccionada:number=0;
+  imagen:string="";
+  ancho:number=0;
+  auto:boolean=false;
+  constructor(){
+    this.indiceImagenSeleccionada=0;
+    this.ancho=300;
+    this.auto=false;
+    this.imagen=this.imagenes[this.indiceImagenSeleccionada];
   }
-  cargarEuros(){
-    this.dolar= Number((this.euro * this.e_d).toFixed(3));
-   this.yen= Number((this.euro*this.e_y).toFixed(3));
-  }
-
-  cargarYenes(){
-    this.euro= Number((this.yen * this.y_e).toFixed(3));
-   this.dolar= Number((this.yen*this.y_d).toFixed(3));
-  }
 
 
-  limpiar() {
-    this.euro=0;
-    this.dolar=0;
-    this.yen=0;
-    }
+
+
+
 
 }
